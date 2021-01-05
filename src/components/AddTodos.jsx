@@ -5,6 +5,12 @@ export default function AddTodos({ setTodo, todo }) {
   const inputText = useRef() //Referens till inputfältet
   const [id, setId] = useState(Math.floor(Math.random() * 10000)) //Ger id värdet 1 vid första renderingen
   //------------------------
+  const handleEnter = (e) => {
+    if (e.keyCode === 13) {
+      handleOnClick()
+    }
+  }
+  //------------------------
 
   const handleOnClick = () => {
     if (!inputText.current.value || /^\s*$/.test(inputText.current.value)) {
@@ -28,10 +34,11 @@ export default function AddTodos({ setTodo, todo }) {
     <div>
       <div>
         <input
+          onKeyDown={(e) => handleEnter(e)}
           className="mt-3 input-field"
           ref={inputText}
           type="text"
-          placeholder="Add ToDo"
+          placeholder="Add something to do!"
         />
         <button onClick={handleOnClick} className="btnn--primary">
           Add your Todo!

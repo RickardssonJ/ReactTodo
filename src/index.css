@@ -74,12 +74,19 @@ code {
 .input-field {
   border: 3px solid rgba(255, 12, 241, 1);
   border-radius: 20px;
-  padding: 5px;
+  padding: 5px 50px 5px 50px;
   margin-bottom: 2%;
+  background: rgb(13, 1, 99);
+  color: white;
 }
 
 .input-field:focus {
   border: 3px solid rgb(26, 202, 64);
+}
+
+::placeholder {
+  color: rgb(171, 168, 168);
+  opacity: 1;
 }
 
 .btnn--primary {

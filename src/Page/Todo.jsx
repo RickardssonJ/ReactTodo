@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
+import Filterd from "../components/Filterd"
 
 import TodoRender from "../components/TodoRender"
 
@@ -9,8 +10,6 @@ export default function Todo() {
   const [todo, setTodo] = useState([]) //En tom array så att man kan lägga till nya todos och mappa över dom
   //------------------------
   const [id, setId] = useState(Math.floor(Math.random() * 10000)) //Ger id värdet 1 vid första renderingen
-  //------------------------
-  const searchRef = useRef()
   //------------------------
 
   useEffect(() => {
@@ -60,22 +59,6 @@ export default function Todo() {
     setTodo(marktAsDoneTodos)
   }
   //--------------------
-  let filterTodos = (e) => {
-    let searchInputText = e.target.value.toLowerCase()
-    let fromLocalStorage = JSON.parse(localStorage.getItem("todos"))
-
-    if (searchInputText) {
-      setTodo(
-        todo.filter((todo) => {
-          return todo.text.toLowerCase().includes(searchInputText)
-        })
-      )
-    } else if (searchInputText === "") {
-      setTodo(fromLocalStorage)
-    }
-  }
-
-  //--------------------
 
   return (
     <div className="container">
@@ -104,13 +87,7 @@ export default function Todo() {
           )
         })}
       </div>
-      <input
-        className="mt-3 input-field"
-        ref={searchRef}
-        placeholder="Filter ToDos"
-        type="text"
-        onChange={filterTodos}
-      />
+      <Filterd setTodo={setTodo} todo={todo} />
     </div>
   )
 }

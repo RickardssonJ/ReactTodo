@@ -23,7 +23,7 @@ export default function Filterd({ setTodo, todo }) {
       <input
         className="mt-3 input-field"
         ref={searchRef}
-        placeholder="Filter ToDos"
+        placeholder="Filter your ToDos here"
         type="text"
         onChange={filterTodos}
       />
